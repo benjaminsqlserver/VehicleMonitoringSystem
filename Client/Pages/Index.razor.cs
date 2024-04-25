@@ -12,6 +12,7 @@ using Radzen.Blazor;
 
 namespace VehicleMonitoringSystem.Client.Pages
 {
+    //This comment here is made so that I can check in ApplicationBaseline branch.
     public partial class Index
     {
         [Inject]

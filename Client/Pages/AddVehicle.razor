@@ -1,0 +1,86 @@
+@page "/add-vehicle"
+
+<PageTitle>Add Vehicle</PageTitle>
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save Vehicle</RadzenAlert>
+        <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Data="@vehicle" Visible="@(vehicle != null)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="Make" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.Make" Name="Make" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="Make" Text="Make is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="Model" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.Model" Name="Model" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="Model" Text="Model is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="Year" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@vehicle.Year" Name="Year" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="License Plate" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.LicensePlate" Name="LicensePlate" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="LicensePlate" Text="LicensePlate is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="V I N" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.VIN" Name="VIN" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Color" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.Color" Name="Color" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Owner Name" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.OwnerName" Name="OwnerName" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="OwnerName" Text="OwnerName is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="Owner Contact Address" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.OwnerContactAddress" Name="OwnerContactAddress" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="OwnerContactAddress" Text="OwnerContactAddress is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="Owner Phone Number" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.OwnerPhoneNumber" Name="OwnerPhoneNumber" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="OwnerPhoneNumber" Text="OwnerPhoneNumber is required" />
+                  </Helper>
+            </RadzenFormField>
+            <RadzenFormField Text="Owner Email" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenTextBox style="display: block; width: 100%" @bind-Value="@vehicle.OwnerEmail" Name="OwnerEmail" />
+                  </ChildContent>    
+                  <Helper>
+                    <RadzenRequiredValidator Component="OwnerEmail" Text="OwnerEmail is required" />
+                  </Helper>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

@@ -1,0 +1,38 @@
+@page "/edit-gps-datum"
+
+<PageTitle>Edit GpsDatum</PageTitle>
+
+    <RadzenColumn SizeMD=12>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save GpsDatum</RadzenAlert>
+        <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Data="@gpsDatum" Visible="@(gpsDatum != null)" Submit="@FormSubmit">
+          <RadzenStack>
+            <RadzenFormField Text="Vehicle" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDropDownDataGrid Data="@vehiclesForVehicleID" TextProperty="Make" ValueProperty="VehicleID" AllowClear=true
+                          style="display: block; width: 100%" @bind-Value="@gpsDatum.VehicleID" Name="VehicleID"
+                        SelectedValue=@vehiclesForVehicleIDValue Count=@vehiclesForVehicleIDCount LoadData=@vehiclesForVehicleIDLoadData />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Latitude" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@gpsDatum.Latitude" Name="Latitude" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Longitude" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenNumeric style="display: block; width: 100%" @bind-Value="@gpsDatum.Longitude" Name="Longitude" />
+              </ChildContent>
+            </RadzenFormField>
+            <RadzenFormField Text="Date And Time Inserted" Variant="Variant.Filled">
+                  <ChildContent>
+                    <RadzenDatePicker DateFormat="MM/dd/yyyy" style="display: block; width: 100%" @bind-Value="@gpsDatum.DateAndTimeInserted" Name="DateAndTimeInserted" />
+              </ChildContent>
+            </RadzenFormField>
+          </RadzenStack>
+          <RadzenStack style="margin-top:1rem;" Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
+                    <RadzenButton ButtonStyle="ButtonStyle.Primary" ButtonType="ButtonType.Submit" Icon="save" Text="Save" Variant="Variant.Flat" />
+                    <RadzenButton ButtonStyle="ButtonStyle.Light" Text="Cancel" Variant="Variant.Flat" Click="@CancelButtonClick"  />
+          </RadzenStack>
+        </RadzenTemplateForm>
+    </RadzenColumn>
+

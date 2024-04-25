@@ -1,0 +1,75 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = browser
+build_property.RootNamespace = VehicleMonitoringSystem.Client
+build_property.RootNamespace = VehicleMonitoringSystem.Client
+build_property.ProjectDir = C:\Users\user\Desktop\VehicleMonitoringSystem\Client\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = false
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\user\Desktop\VehicleMonitoringSystem\Client
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/AddGpsDatum.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkR3BzRGF0dW0ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/AddSpeedMeasurement.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkU3BlZWRNZWFzdXJlbWVudC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/AddVehicle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRkVmVoaWNsZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/EditGpsDatum.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEdwc0RhdHVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/EditSpeedMeasurement.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFNwZWVkTWVhc3VyZW1lbnQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/EditVehicle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFZlaGljbGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/GpsData.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3BzRGF0YS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/SpeedMeasurements.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3BlZWRNZWFzdXJlbWVudHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Pages/Vehicles.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmVoaWNsZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Um91dGVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/user/Desktop/VehicleMonitoringSystem/Client/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 

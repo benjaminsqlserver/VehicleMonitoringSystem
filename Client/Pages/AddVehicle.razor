@@ -3,7 +3,7 @@
 <PageTitle>Add Vehicle</PageTitle>
     <RadzenColumn SizeMD=12>
         <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save Vehicle</RadzenAlert>
-        <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Data="@vehicle" Visible="@(vehicle != null)" Submit="@FormSubmit">
+        <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Data="@vehicle" Visible="@(vehicle != null && canEdit)" Submit="@FormSubmit">
           <RadzenStack>
             <RadzenFormField Text="Make" Variant="Variant.Filled">
                   <ChildContent>

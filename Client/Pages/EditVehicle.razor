@@ -1,10 +1,26 @@
 @page "/edit-vehicle"
 
 <PageTitle>Edit Vehicle</PageTitle>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Item no longer available." Visible="@(!canEdit)" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" style="margin-bottom: 20px" Text="Close" Visible="@(!canEdit)" Click="@CancelButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
+<RadzenRow>
+    <RadzenColumn SizeMD="9">
+    <RadzenLabel style="font-weight: bold" Text="Another user has made conflicting changes to one or more of the fields you have modified. Please reload." Visible="@hasChanges" />
+    </RadzenColumn>
+    <RadzenColumn SizeMD="3">
+    <RadzenButton ButtonStyle="ButtonStyle.Secondary" Icon="autorenew" style="margin-bottom: 20px" Text="Reload" Visible="@hasChanges" Click="@ReloadButtonClick" />
+    </RadzenColumn>
+</RadzenRow>
 
     <RadzenColumn SizeMD=12>
         <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save Vehicle</RadzenAlert>
-        <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Data="@vehicle" Visible="@(vehicle != null)" Submit="@FormSubmit">
+        <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Data="@vehicle" Visible="@(vehicle != null && canEdit)" Submit="@FormSubmit">
           <RadzenStack>
             <RadzenFormField Text="Make" Variant="Variant.Filled">
                   <ChildContent>

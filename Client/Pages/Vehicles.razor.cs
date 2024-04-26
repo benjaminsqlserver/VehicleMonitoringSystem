@@ -65,7 +65,8 @@ namespace VehicleMonitoringSystem.Client.Pages
 
         protected async Task AddButtonClick(MouseEventArgs args)
         {
-            await DialogService.OpenAsync<AddVehicle>("Add Vehicle", null);
+            //await DialogService.OpenAsync<AddVehicle>("Add Vehicle", null);
+            await DialogService.OpenAsync<AddVehicle>("Add New Vehicle", null, new DialogOptions() { Width = $"{650}px", Height = $"{400}px" });
             await grid0.Reload();
         }
 

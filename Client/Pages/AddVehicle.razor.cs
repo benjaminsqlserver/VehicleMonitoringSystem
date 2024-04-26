@@ -43,7 +43,7 @@ namespace VehicleMonitoringSystem.Client.Pages
         {
             try
             {
-                await ConDataService.CreateVehicle(vehicle);
+                var result = await ConDataService.CreateVehicle(vehicle);
                 DialogService.Close(vehicle);
             }
             catch (Exception ex)
@@ -56,5 +56,9 @@ namespace VehicleMonitoringSystem.Client.Pages
         {
             DialogService.Close(null);
         }
+
+
+        protected bool hasChanges = false;
+        protected bool canEdit = true;
     }
 }

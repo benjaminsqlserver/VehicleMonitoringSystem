@@ -46,7 +46,13 @@ namespace VehicleMonitoringSystem.Client.Pages
         {
             try
             {
-                await ConDataService.UpdateVehicle(vehicleId:VehicleID, vehicle);
+                var result = await ConDataService.UpdateVehicle(vehicleId:VehicleID, vehicle);
+                if (result.StatusCode == System.Net.HttpStatusCode.PreconditionFailed)
+                {
+                     hasChanges = true;
+                     canEdit = false;
+                     return;
+                }
                 DialogService.Close(vehicle);
             }
             catch (Exception ex)
@@ -58,6 +64,19 @@ namespace VehicleMonitoringSystem.Client.Pages
         protected async Task CancelButtonClick(MouseEventArgs args)
         {
             DialogService.Close(null);
+        }
+
+
+        protected bool hasChanges = false;
+        protected bool canEdit = true;
+
+
+        protected async Task ReloadButtonClick(MouseEventArgs args)
+        {
+            hasChanges = false;
+            canEdit = true;
+
+            vehicle = await ConDataService.GetVehicleByVehicleId(vehicleId:VehicleID);
         }
     }
 }

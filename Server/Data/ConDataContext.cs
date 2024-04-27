@@ -50,6 +50,8 @@ namespace VehicleMonitoringSystem.Server.Data
 
         public DbSet<VehicleMonitoringSystem.Server.Models.ConData.Vehicle> Vehicles { get; set; }
 
+        public DbSet<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> SpeedClassifications { get; set; }
+
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {
             configurationBuilder.Conventions.Add(_ => new BlankTriggerAddingConvention());

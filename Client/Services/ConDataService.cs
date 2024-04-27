@@ -315,5 +315,100 @@ namespace VehicleMonitoringSystem.Client
 
             return await httpClient.SendAsync(httpRequestMessage);
         }
+
+        public async System.Threading.Tasks.Task ExportSpeedClassificationsToExcel(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/condata/speedclassifications/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/condata/speedclassifications/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        public async System.Threading.Tasks.Task ExportSpeedClassificationsToCSV(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/condata/speedclassifications/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/condata/speedclassifications/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        partial void OnGetSpeedClassifications(HttpRequestMessage requestMessage);
+
+        public async Task<Radzen.ODataServiceResult<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification>> GetSpeedClassifications(Query query)
+        {
+            return await GetSpeedClassifications(filter:$"{query.Filter}", orderby:$"{query.OrderBy}", top:query.Top, skip:query.Skip, count:query.Top != null && query.Skip != null);
+        }
+
+        public async Task<Radzen.ODataServiceResult<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification>> GetSpeedClassifications(string filter = default(string), string orderby = default(string), string expand = default(string), int? top = default(int?), int? skip = default(int?), bool? count = default(bool?), string format = default(string), string select = default(string))
+        {
+            var uri = new Uri(baseUri, $"SpeedClassifications");
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:filter, top:top, skip:skip, orderby:orderby, expand:expand, select:select, count:count);
+
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
+
+            OnGetSpeedClassifications(httpRequestMessage);
+
+            var response = await httpClient.SendAsync(httpRequestMessage);
+
+            return await Radzen.HttpResponseMessageExtensions.ReadAsync<Radzen.ODataServiceResult<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification>>(response);
+        }
+
+        partial void OnCreateSpeedClassification(HttpRequestMessage requestMessage);
+
+        public async Task<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> CreateSpeedClassification(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification speedClassification = default(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification))
+        {
+            var uri = new Uri(baseUri, $"SpeedClassifications");
+
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, uri);
+
+            httpRequestMessage.Content = new StringContent(Radzen.ODataJsonSerializer.Serialize(speedClassification), Encoding.UTF8, "application/json");
+
+            OnCreateSpeedClassification(httpRequestMessage);
+
+            var response = await httpClient.SendAsync(httpRequestMessage);
+
+            return await Radzen.HttpResponseMessageExtensions.ReadAsync<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification>(response);
+        }
+
+        partial void OnDeleteSpeedClassification(HttpRequestMessage requestMessage);
+
+        public async Task<HttpResponseMessage> DeleteSpeedClassification(short speedClassificationId = default(short))
+        {
+            var uri = new Uri(baseUri, $"SpeedClassifications({speedClassificationId})");
+
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Delete, uri);
+
+            OnDeleteSpeedClassification(httpRequestMessage);
+
+            return await httpClient.SendAsync(httpRequestMessage);
+        }
+
+        partial void OnGetSpeedClassificationBySpeedClassificationId(HttpRequestMessage requestMessage);
+
+        public async Task<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> GetSpeedClassificationBySpeedClassificationId(string expand = default(string), short speedClassificationId = default(short))
+        {
+            var uri = new Uri(baseUri, $"SpeedClassifications({speedClassificationId})");
+
+            uri = Radzen.ODataExtensions.GetODataUri(uri: uri, filter:null, top:null, skip:null, orderby:null, expand:expand, select:null, count:null);
+
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, uri);
+
+            OnGetSpeedClassificationBySpeedClassificationId(httpRequestMessage);
+
+            var response = await httpClient.SendAsync(httpRequestMessage);
+
+            return await Radzen.HttpResponseMessageExtensions.ReadAsync<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification>(response);
+        }
+
+        partial void OnUpdateSpeedClassification(HttpRequestMessage requestMessage);
+        
+        public async Task<HttpResponseMessage> UpdateSpeedClassification(short speedClassificationId = default(short), VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification speedClassification = default(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification))
+        {
+            var uri = new Uri(baseUri, $"SpeedClassifications({speedClassificationId})");
+
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Patch, uri);
+
+            httpRequestMessage.Headers.Add("If-Match", speedClassification.ETag);    
+
+            httpRequestMessage.Content = new StringContent(Radzen.ODataJsonSerializer.Serialize(speedClassification), Encoding.UTF8, "application/json");
+
+            OnUpdateSpeedClassification(httpRequestMessage);
+
+            return await httpClient.SendAsync(httpRequestMessage);
+        }
     }
 }

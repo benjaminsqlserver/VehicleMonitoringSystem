@@ -557,5 +557,166 @@ namespace VehicleMonitoringSystem.Server
 
             return itemToDelete;
         }
+    
+        public async Task ExportSpeedClassificationsToExcel(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/condata/speedclassifications/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/condata/speedclassifications/excel(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        public async Task ExportSpeedClassificationsToCSV(Query query = null, string fileName = null)
+        {
+            navigationManager.NavigateTo(query != null ? query.ToUrl($"export/condata/speedclassifications/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')") : $"export/condata/speedclassifications/csv(fileName='{(!string.IsNullOrEmpty(fileName) ? UrlEncoder.Default.Encode(fileName) : "Export")}')", true);
+        }
+
+        partial void OnSpeedClassificationsRead(ref IQueryable<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> items);
+
+        public async Task<IQueryable<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification>> GetSpeedClassifications(Query query = null)
+        {
+            var items = Context.SpeedClassifications.AsQueryable();
+
+
+            if (query != null)
+            {
+                if (!string.IsNullOrEmpty(query.Expand))
+                {
+                    var propertiesToExpand = query.Expand.Split(',');
+                    foreach(var p in propertiesToExpand)
+                    {
+                        items = items.Include(p.Trim());
+                    }
+                }
+
+                ApplyQuery(ref items, query);
+            }
+
+            OnSpeedClassificationsRead(ref items);
+
+            return await Task.FromResult(items);
+        }
+
+        partial void OnSpeedClassificationGet(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item);
+        partial void OnGetSpeedClassificationBySpeedClassificationId(ref IQueryable<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> items);
+
+
+        public async Task<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> GetSpeedClassificationBySpeedClassificationId(short speedclassificationid)
+        {
+            var items = Context.SpeedClassifications
+                              .AsNoTracking()
+                              .Where(i => i.SpeedClassificationID == speedclassificationid);
+
+ 
+            OnGetSpeedClassificationBySpeedClassificationId(ref items);
+
+            var itemToReturn = items.FirstOrDefault();
+
+            OnSpeedClassificationGet(itemToReturn);
+
+            return await Task.FromResult(itemToReturn);
+        }
+
+        partial void OnSpeedClassificationCreated(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item);
+        partial void OnAfterSpeedClassificationCreated(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item);
+
+        public async Task<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> CreateSpeedClassification(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification speedclassification)
+        {
+            OnSpeedClassificationCreated(speedclassification);
+
+            var existingItem = Context.SpeedClassifications
+                              .Where(i => i.SpeedClassificationID == speedclassification.SpeedClassificationID)
+                              .FirstOrDefault();
+
+            if (existingItem != null)
+            {
+               throw new Exception("Item already available");
+            }            
+
+            try
+            {
+                Context.SpeedClassifications.Add(speedclassification);
+                Context.SaveChanges();
+            }
+            catch
+            {
+                Context.Entry(speedclassification).State = EntityState.Detached;
+                throw;
+            }
+
+            OnAfterSpeedClassificationCreated(speedclassification);
+
+            return speedclassification;
+        }
+
+        public async Task<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> CancelSpeedClassificationChanges(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item)
+        {
+            var entityToCancel = Context.Entry(item);
+            if (entityToCancel.State == EntityState.Modified)
+            {
+              entityToCancel.CurrentValues.SetValues(entityToCancel.OriginalValues);
+              entityToCancel.State = EntityState.Unchanged;
+            }
+
+            return item;
+        }
+
+        partial void OnSpeedClassificationUpdated(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item);
+        partial void OnAfterSpeedClassificationUpdated(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item);
+
+        public async Task<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> UpdateSpeedClassification(short speedclassificationid, VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification speedclassification)
+        {
+            OnSpeedClassificationUpdated(speedclassification);
+
+            var itemToUpdate = Context.SpeedClassifications
+                              .Where(i => i.SpeedClassificationID == speedclassification.SpeedClassificationID)
+                              .FirstOrDefault();
+
+            if (itemToUpdate == null)
+            {
+               throw new Exception("Item no longer available");
+            }
+                
+            var entryToUpdate = Context.Entry(itemToUpdate);
+            entryToUpdate.CurrentValues.SetValues(speedclassification);
+            entryToUpdate.State = EntityState.Modified;
+
+            Context.SaveChanges();
+
+            OnAfterSpeedClassificationUpdated(speedclassification);
+
+            return speedclassification;
+        }
+
+        partial void OnSpeedClassificationDeleted(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item);
+        partial void OnAfterSpeedClassificationDeleted(VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification item);
+
+        public async Task<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> DeleteSpeedClassification(short speedclassificationid)
+        {
+            var itemToDelete = Context.SpeedClassifications
+                              .Where(i => i.SpeedClassificationID == speedclassificationid)
+                              .FirstOrDefault();
+
+            if (itemToDelete == null)
+            {
+               throw new Exception("Item no longer available");
+            }
+
+            OnSpeedClassificationDeleted(itemToDelete);
+
+
+            Context.SpeedClassifications.Remove(itemToDelete);
+
+            try
+            {
+                Context.SaveChanges();
+            }
+            catch
+            {
+                Context.Entry(itemToDelete).State = EntityState.Unchanged;
+                throw;
+            }
+
+            OnAfterSpeedClassificationDeleted(itemToDelete);
+
+            return itemToDelete;
+        }
         }
 }

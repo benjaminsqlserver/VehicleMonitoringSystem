@@ -21,6 +21,7 @@ builder.Services.AddControllers().AddOData(opt =>
     oDataBuilderConData.EntitySet<VehicleMonitoringSystem.Server.Models.ConData.GpsDatum>("GpsData");
     oDataBuilderConData.EntitySet<VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement>("SpeedMeasurements");
     oDataBuilderConData.EntitySet<VehicleMonitoringSystem.Server.Models.ConData.Vehicle>("Vehicles");
+    oDataBuilderConData.EntitySet<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification>("SpeedClassifications");
     opt.AddRouteComponents("odata/ConData", oDataBuilderConData.GetEdmModel()).Count().Filter().OrderBy().Expand().Select().SetMaxTop(null).TimeZone = TimeZoneInfo.Utc;
 });
 builder.Services.AddScoped<VehicleMonitoringSystem.Client.ConDataService>();

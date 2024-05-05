@@ -60,5 +60,19 @@ namespace VehicleMonitoringSystem.Server.Controllers
         {
             return ToExcel(ApplyQuery(await service.GetVehicles(), Request.Query, false), fileName);
         }
+
+        [HttpGet("/export/ConData/speedclassifications/csv")]
+        [HttpGet("/export/ConData/speedclassifications/csv(fileName='{fileName}')")]
+        public async Task<FileStreamResult> ExportSpeedClassificationsToCSV(string fileName = null)
+        {
+            return ToCSV(ApplyQuery(await service.GetSpeedClassifications(), Request.Query, false), fileName);
+        }
+
+        [HttpGet("/export/ConData/speedclassifications/excel")]
+        [HttpGet("/export/ConData/speedclassifications/excel(fileName='{fileName}')")]
+        public async Task<FileStreamResult> ExportSpeedClassificationsToExcel(string fileName = null)
+        {
+            return ToExcel(ApplyQuery(await service.GetSpeedClassifications(), Request.Query, false), fileName);
+        }
     }
 }

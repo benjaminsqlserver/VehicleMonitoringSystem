@@ -10,6 +10,8 @@ using Microsoft.JSInterop;
 using Radzen;
 using Radzen.Blazor;
 using VehicleMonitoringSystem.Client.ApplicationConstants;
+using VehicleMonitoringSystem.Server.Models.ConData;
+
 
 namespace VehicleMonitoringSystem.Client.Pages
 {
@@ -46,6 +48,8 @@ namespace VehicleMonitoringSystem.Client.Pages
         protected int slowSpeedCount;
         protected int fastSpeedCount;
 
+        protected List<SpeedMeasurement> trafficOffenders;
+
          // Method to retrieve vehicle IDs exceeding a given speed limit in the last one month
         protected async Task<List<long?>> GetVehicleIdsExceedingUpperLimit(int upperLimit)
         {
@@ -68,6 +72,32 @@ namespace VehicleMonitoringSystem.Client.Pages
 
             // Convert to a list and return
             return vehicleIdsThatExceeded.ToList();
+        }
+
+        // Method to retrieve list of vehicles exceeding a given speed limit in the last one month
+        //This method is going to be bound to a datagrid
+        protected async Task<List<SpeedMeasurement>> GetListOfVehiclesExceedingUpperLimit(int upperLimit)
+        {
+            // Calculate the start and end date for the last one month month
+            var startDate = DateTime.Today.AddMonths(-1).Date;
+            var endDate = DateTime.Today.Date;
+
+            // Retrieve speed measurements for the last one month
+            //expand vehicle
+            //odata equivalent of fetching a vehucle (full details) record along with each speed measurement
+            var speedMeasurementsResult = await ConData.GetSpeedMeasurements(
+                filter: $"DateAndTimeInserted ge {startDate:O} and DateAndTimeInserted le {endDate:O}",expand: "Vehicle"
+            );
+
+            // Filter speed measurements that exceeded the upper limit
+            var filteredMeasurements = speedMeasurementsResult.Value.Where(
+                measurement => measurement.SpeedInKmPerHour > upperLimit
+            );
+
+         
+
+            // Convert to a list and return
+            return filteredMeasurements.ToList();
         }
 
 
@@ -137,6 +167,9 @@ namespace VehicleMonitoringSystem.Client.Pages
             slowSpeedCount = await GetNumberOfVehiclesNotExceedingUpperLimit(slowSpeedValue);
             normalSpeedCount = await GetNumberOfVehiclesNotExceedingUpperLimit(normalSpeedValue);
             fastSpeedCount = await GetNumberOfVehiclesExceedingUpperLimit(normalSpeedValue);
+
+            //retrieving the list of traffic offenders
+            trafficOffenders=await GetListOfVehiclesExceedingUpperLimit(normalSpeedValue);
         }
 
     }

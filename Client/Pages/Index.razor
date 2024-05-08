@@ -91,4 +91,22 @@
     </RadzenColumn>
    
 </RadzenRow>
+<RadzenRow>
+ <RadzenColumn SizeXL="12">
+  <RadzenCard>
+  <RadzenHeading Text="Traffic Offenders"></RadzenHeading>
+  <RadzenDataGrid TItem="Server.Models.ConData.SpeedMeasurement" Data="@trafficOffenders">
+      <Columns>
+         <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="Vehicle.VIN" Title="Vehicle">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="DateAndTimeInserted" Title="Date Offence Was Committed">
+                </RadzenDataGridColumn>
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="SpeedInKmPerHour" Title="Speed In Km/h">
+                </RadzenDataGridColumn>
+      </Columns>
+  </RadzenDataGrid>
+ 
+  </RadzenCard>
+ </RadzenColumn>
+</RadzenRow>
  

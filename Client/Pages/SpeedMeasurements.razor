@@ -1,10 +1,10 @@
 @page "/speed-measurements"
 
-<PageTitle>SpeedMeasurements</PageTitle>
+<PageTitle>Speed Measurement</PageTitle>
 <RadzenStack>
     <RadzenRow AlignItems="AlignItems.Center">
         <RadzenColumn Size="12" SizeMD="6">
-            <RadzenText Text="SpeedMeasurements" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+            <RadzenText Text="Speed Measurements" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
         </RadzenColumn>
         <RadzenColumn Size="12" SizeMD="6">
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
@@ -19,16 +19,15 @@
     <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
     <RadzenRow>
       <RadzenColumn SizeMD=12>
-        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" Responsive="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
             Data="@speedMeasurements" LoadData="@Grid0LoadData" Count="@count" TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" RowDoubleClick="@EditRow">
             <Columns>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="SpeedID" Title="Speed I D">
+              
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="Vehicle.VIN" Title="Vehicle">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="Vehicle.Make" Title="Vehicle">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="SpeedInKmPerHour" Title="Speed(km/h)">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="SpeedInKmPerHour" Title="Speed In Km Per Hour">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="DateAndTimeInserted" Title="Date And Time Inserted">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Property="DateAndTimeInserted" Title="Date">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
                     <Template Context="speedMeasurement">

@@ -65,13 +65,13 @@ namespace VehicleMonitoringSystem.Client.Pages
 
         protected async Task AddButtonClick(MouseEventArgs args)
         {
-            await DialogService.OpenAsync<AddSpeedMeasurement>("Add SpeedMeasurement", null);
+            await DialogService.OpenAsync<AddSpeedMeasurement>("Add Speed Measurement", null);
             await grid0.Reload();
         }
 
         protected async Task EditRow(DataGridRowMouseEventArgs<VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement> args)
         {
-            await DialogService.OpenAsync<EditSpeedMeasurement>("Edit SpeedMeasurement", new Dictionary<string, object> { {"SpeedID", args.Data.SpeedID} });
+            await DialogService.OpenAsync<EditSpeedMeasurement>("Edit Speed Measurement", new Dictionary<string, object> { {"SpeedID", args.Data.SpeedID} });
             await grid0.Reload();
         }
 

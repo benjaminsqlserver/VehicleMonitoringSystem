@@ -1,10 +1,10 @@
 @page "/gps-data"
 
-<PageTitle>GpsData</PageTitle>
+<PageTitle>Gps Data</PageTitle>
 <RadzenStack>
     <RadzenRow AlignItems="AlignItems.Center">
         <RadzenColumn Size="12" SizeMD="6">
-            <RadzenText Text="GpsData" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
+            <RadzenText Text="Gps Data" TextStyle="TextStyle.H3" TagName="TagName.H1" style="margin: 0" />
         </RadzenColumn>
         <RadzenColumn Size="12" SizeMD="6">
             <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.End" Gap="0.5rem">
@@ -19,18 +19,17 @@
     <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
     <RadzenRow>
       <RadzenColumn SizeMD=12>
-        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px" Responsive="true"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
             Data="@gpsData" LoadData="@Grid0LoadData" Count="@count" TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" RowDoubleClick="@EditRow">
             <Columns>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Property="GPSDataID" Title="G P S Data I D">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Property="Vehicle.Make" Title="Vehicle">
+                
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Property="Vehicle.VIN" Title="Vehicle">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Property="Latitude" Title="Latitude">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Property="Longitude" Title="Longitude">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Property="DateAndTimeInserted" Title="Date And Time Inserted">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Property="DateAndTimeInserted" Title="Date">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
                     <Template Context="gpsDatum">

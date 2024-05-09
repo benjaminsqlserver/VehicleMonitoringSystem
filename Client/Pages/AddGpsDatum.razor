@@ -1,8 +1,8 @@
 @page "/add-gps-datum"
 
-<PageTitle>Add GpsDatum</PageTitle>
+<PageTitle>Add Gps Data</PageTitle>
     <RadzenColumn SizeMD=12>
-        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save GpsDatum</RadzenAlert>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Can not save GPS Data</RadzenAlert>
         <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.GpsDatum" Data="@gpsDatum" Visible="@(gpsDatum != null)" Submit="@FormSubmit">
           <RadzenStack>
             <RadzenFormField Text="Vehicle" Variant="Variant.Filled">

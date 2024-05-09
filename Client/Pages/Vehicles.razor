@@ -19,30 +19,18 @@
     <RadzenTextBox Placeholder="Search ..." style="display: block; width: 100%" @oninput="@Search" aria-label="Search by all string columns" />
     <RadzenRow>
       <RadzenColumn SizeMD=12>
-        <RadzenDataGrid @ref="grid0" ColumnWidth="200px"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
+        <RadzenDataGrid @ref="grid0" ColumnWidth="200px" Responsive="true"   AllowFiltering="true" FilterMode="FilterMode.Advanced" AllowPaging="true" AllowSorting="true" ShowPagingSummary="true" PageSizeOptions=@(new int[]{5, 10, 20, 30})
             Data="@vehicles" LoadData="@Grid0LoadData" Count="@count" TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" RowDoubleClick="@EditRow">
             <Columns>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="VehicleID" Title="Vehicle I D">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="Make" Title="Make" Width="50px">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="Make" Title="Make">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Width="50px" Property="Model" Title="Model">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="Model" Title="Model">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Width="50px" Property="Year" Title="Year">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="Year" Title="Year">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Width="50px" Property="LicensePlate" Title="License Plate">
                 </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="LicensePlate" Title="License Plate">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="VIN" Title="V I N">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="Color" Title="Color">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="OwnerName" Title="Owner Name">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="OwnerContactAddress" Title="Owner Contact Address">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="OwnerPhoneNumber" Title="Owner Phone Number">
-                </RadzenDataGridColumn>
-                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Property="OwnerEmail" Title="Owner Email">
+                <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Width="50px" Property="VIN" Title="VIN">
                 </RadzenDataGridColumn>
                 <RadzenDataGridColumn TItem="VehicleMonitoringSystem.Server.Models.ConData.Vehicle" Filterable="false" Sortable="false" Width="70px" TextAlign="TextAlign.Center">
                     <Template Context="vehicle">

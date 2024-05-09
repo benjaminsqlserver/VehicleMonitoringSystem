@@ -65,13 +65,13 @@ namespace VehicleMonitoringSystem.Client.Pages
 
         protected async Task AddButtonClick(MouseEventArgs args)
         {
-            await DialogService.OpenAsync<AddGpsDatum>("Add GpsDatum", null);
+            await DialogService.OpenAsync<AddGpsDatum>("Add GPS Data", null);
             await grid0.Reload();
         }
 
         protected async Task EditRow(DataGridRowMouseEventArgs<VehicleMonitoringSystem.Server.Models.ConData.GpsDatum> args)
         {
-            await DialogService.OpenAsync<EditGpsDatum>("Edit GpsDatum", new Dictionary<string, object> { {"GPSDataID", args.Data.GPSDataID} });
+            await DialogService.OpenAsync<EditGpsDatum>("Edit GPS Daata", new Dictionary<string, object> { {"GPSDataID", args.Data.GPSDataID} });
             await grid0.Reload();
         }
 

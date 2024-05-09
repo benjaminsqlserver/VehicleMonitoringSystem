@@ -3,7 +3,7 @@
 <PageTitle>Edit SpeedMeasurement</PageTitle>
 
     <RadzenColumn SizeMD=12>
-        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save SpeedMeasurement</RadzenAlert>
+        <RadzenAlert Shade="Shade.Lighter" Variant="Variant.Flat" Size="AlertSize.Small" AlertStyle="AlertStyle.Danger" Visible="@errorVisible">Cannot save Speed Measurement</RadzenAlert>
         <RadzenTemplateForm TItem="VehicleMonitoringSystem.Server.Models.ConData.SpeedMeasurement" Data="@speedMeasurement" Visible="@(speedMeasurement != null)" Submit="@FormSubmit">
           <RadzenStack>
             <RadzenFormField Text="Vehicle" Variant="Variant.Filled">

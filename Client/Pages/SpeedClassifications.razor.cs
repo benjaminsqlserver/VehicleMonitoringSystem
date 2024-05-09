@@ -65,13 +65,13 @@ namespace VehicleMonitoringSystem.Client.Pages
 
         protected async Task AddButtonClick(MouseEventArgs args)
         {
-            await DialogService.OpenAsync<AddSpeedClassification>("Add SpeedClassification", null);
+            await DialogService.OpenAsync<AddSpeedClassification>("Add Speed Classification", null);
             await grid0.Reload();
         }
 
         protected async Task EditRow(DataGridRowMouseEventArgs<VehicleMonitoringSystem.Server.Models.ConData.SpeedClassification> args)
         {
-            await DialogService.OpenAsync<EditSpeedClassification>("Edit SpeedClassification", new Dictionary<string, object> { {"SpeedClassificationID", args.Data.SpeedClassificationID} });
+            await DialogService.OpenAsync<EditSpeedClassification>("Edit Speed Classification", new Dictionary<string, object> { {"SpeedClassificationID", args.Data.SpeedClassificationID} });
             await grid0.Reload();
         }
 

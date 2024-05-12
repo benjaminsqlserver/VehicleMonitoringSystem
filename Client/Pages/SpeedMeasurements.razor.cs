@@ -40,6 +40,9 @@ namespace VehicleMonitoringSystem.Client.Pages
 
         protected string search = "";
 
+        [Inject]
+        protected SecurityService Security { get; set; }
+
         protected async Task Search(ChangeEventArgs args)
         {
             search = $"{args.Value}";

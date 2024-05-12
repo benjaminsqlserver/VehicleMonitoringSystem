@@ -50,6 +50,9 @@ namespace VehicleMonitoringSystem.Client.Pages
 
         protected List<SpeedMeasurement> trafficOffenders;
 
+        [Inject]
+        protected SecurityService Security { get; set; }
+
          // Method to retrieve vehicle IDs exceeding a given speed limit in the last one month
         protected async Task<List<long?>> GetVehicleIdsExceedingUpperLimit(int upperLimit)
         {

@@ -44,6 +44,9 @@ namespace VehicleMonitoringSystem.Client.Pages
 
         protected int vehiclesForVehicleIDCount;
         protected VehicleMonitoringSystem.Server.Models.ConData.Vehicle vehiclesForVehicleIDValue;
+
+        [Inject]
+        protected SecurityService Security { get; set; }
         protected async Task vehiclesForVehicleIDLoadData(LoadDataArgs args)
         {
             try

@@ -43,7 +43,7 @@
             <RadzenPanelMenuItem Text="Gps Data" Path="gps-data" />
             <RadzenPanelMenuItem Text="Speed Measurements" Path="speed-measurements" />
             <RadzenPanelMenuItem Text="Vehicles" Path="vehicles" />
-            <RadzenPanelMenuItem Text="Speed Classification" Path="speed-classifications" />
+            <RadzenPanelMenuItem Text="Speed Classification" Path="speed-classifications" Visible="@Security.IsInRole(new string[]{"Admin"})" />
         </RadzenPanelMenu>
         <RadzenStack AlignItems="Radzen.AlignItems.Center" Gap="0" class="rz-py-4 rz-py-lg-6" Style="padding: var(--rz-panel-menu-item-padding);">
             <RadzenText Text="Vehicle Monitoring System v1.0.0" TextStyle="Radzen.Blazor.TextStyle.Caption" TagName="Radzen.Blazor.TagName.P" TextAlign="Radzen.TextAlign.Center" />

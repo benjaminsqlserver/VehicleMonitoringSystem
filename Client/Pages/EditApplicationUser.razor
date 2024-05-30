@@ -1,5 +1,5 @@
 @page "/edit-application-user/{Id}"
-@attribute [Authorize]
+@attribute [Authorize(Roles="Admin")]
 
 <RadzenRow>
     <RadzenColumn SizeMD="12">
